@@ -1,1 +1,29 @@
 <h1>Welcome, <%=current_user.username%></h1>
+
+<% if @questions.any?%>
+  <h2>Your Questions:</h2>
+  <ul>
+    <% @questions.each do |question|%>
+    <li>
+      <p><a href="/questions/<%= question.id%>"><%= question.title%></a></p>
+      <p><%= question.content%></p>
+    </li>
+    <% end %>
+  </ul>
+<% else %>
+  <h2>You Haven't Asked Any Questions. Get Your Ass On It.</h2>
+<% end %>
+
+<% if @answers.any?%>
+  <h2>Your Answers:</h2>
+  <ul>
+    <% @answers.each do |answer|%>
+    <li>
+      <p><a href="/questions/<%= answer.question.id%>"><%= answer.question.title%></a></p>
+      <p><%= answer.content%></p>
+    </li>
+    <% end %>
+  </ul>
+<% else %>
+  <h2>You Haven't Answered Any Questions. Stop Mooching.</h2>
+<% end %>
