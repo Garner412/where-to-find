@@ -2,9 +2,10 @@
 <h1>Where To Find</h1>
 
 <% if @questions %>
-  <ul>
+  <ul class="collection with-header">
+  	<li class="collection-header">Question List:</li>
     <% @questions.each do |question| %>
-      <li><a href="/questions/<%= question.id %>"><%= question.title %></a></li>
+      <li class="collection-item"><a href="/questions/<%= question.id %>"><%= question.title %><span class="badge">Answers: <%= question.answers.count %> </span></a></a></li>
     <% end %>
   </ul>
 <% end %>
