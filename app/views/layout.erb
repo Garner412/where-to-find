@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
 
   <!-- Compiled and minified JavaScript -->
-          
+
   <link rel="stylesheet" href="/css/application.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -23,10 +23,10 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
 
-  
+
   <title>WTF?</title>
 </head>
-<body>    
+<body>
   <nav>
     <div class="nav-wrapper">
         <a href="/" class="brand-logo">WTF</a>
@@ -34,8 +34,8 @@
         <% if logged_in? %>
         <li><a href="/users/<%= current_user.id %>"><%= current_user.username.capitalize %></a></li>
         <li>
-          <form method="post" action="/sessions/delete">
-            <input type="hidden" name="_method" value="delete"/>
+          <form method="post" action="/sessions">
+            <input type="hidden" name="_method" value="delete">
             <input type="submit" value="logout"/>
           </form>
         </li>
