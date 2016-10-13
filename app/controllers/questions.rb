@@ -4,12 +4,20 @@ get '/questions' do
 end
 
 post '/questions' do
-  # @question = Question.new()
-  # if @question.save
+  @question = Question.new(params[:question])
+  if @question.save
+    redirect "/questions/#{@question.id}"
+  else
+    redirect '/'
+  end
+end
 
-  # else
-
-  # end
+get '/questions/new' do
+  if logged_in?
+    erb :'/questions/new'
+  else
+    redirect '/'
+  end
 end
 
 get '/questions/:id' do
@@ -25,3 +33,4 @@ delete '/questions/:id' do
   # @question = Question.find_by(id: params[:id])
 
 end
+

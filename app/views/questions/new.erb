@@ -1,0 +1,19 @@
+<br><br><br>
+<div class="container">
+  <br><br>
+
+  <%= erb :'questions/_errors', layout: false, locals: {errors: @errors} %>
+
+  <h2 id="Header"> Create New Question </h2>
+
+  <form action="/questions" method="post"><br><br>
+    <div class="form-group">
+    	<input type="hidden" class="form-control" name="question[user_id]" value="current_user.id">
+      <label for="title">Title</label><br>
+      <input type="text" class="form-control" name="question[title]" placeholder="Title"><br><br>
+      <label for="content">Question</label><br>
+      <textarea name="question[content]" class="form-control" placeholder="Question"></textarea><br><br>
+      <input type="submit" value="Add Question" class="btn btn-default">
+    </div>
+  </form>
+</div>
