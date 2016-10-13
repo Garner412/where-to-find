@@ -4,3 +4,12 @@ body {
   margin: 20px auto;
   padding: 10px;
 }
+
+.button {
+  border-radius: 15px;
+  background-color: orange;
+  border: 0;
+  color: white;
+  padding: 8px;
+  text-transform: uppercase;
+}
