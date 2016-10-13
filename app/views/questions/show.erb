@@ -8,27 +8,36 @@
 
 <h4> Comments </h4>
 <% if @question.comments %>
-  <p>Total Question Comments <%= @question.comments.count %> </p>
+  <p>Total Question Comments: <%= @question.comments.count %> </p>
   <ul>
     <% @question.comments.each do |comment| %>
       <li><%= comment.content %><br> Votes: <%= comment.votes.count %></li><br>
     <% end %>
   </ul>
 <% end %>
-<p> <a href="/questions/<%= @question.id %>/comments">Create New Comment</a>
+<form action="/questions/<%= @question.id %>/comments">
+  <input class="button" type="submit" value="Create New Comment">
+</form>
 
 <h4> Answers </h4>
 <% if @question.answers %>
+<p> Total Answers: <%= @question.answers.count %></p>
 <ul>
   <% @question.answers.each do |answer| %>
-  <li><%= answer.content %></li>
+  <li><%= answer.content %><br> Votes: <%= answer.votes.count %></li><br>
     <% if answer.comments %>
       <ul>
         <% answer.comments.each do |comment| %>
-          <li> <%= comment.content %> </li>
+          <li> <%= comment.content %><br> Votes: <%= comment.votes.count %></li><br>
         <% end %>
       </ul>
     <% end %>
   <% end %>
-<ul>
+</ul>
+<% else %>
+<p> No Answers Yet </p>
 <% end %>
+
+<form action="/questions/<%= @question.id %>/answers/new">
+  <input class="button" type="submit" value="Answer Question">
+</form>
