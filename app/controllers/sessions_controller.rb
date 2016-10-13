@@ -2,7 +2,11 @@
 enable :sessions
 
 get '/sessions/new' do
-  erb :'sessions/new'
+  if request.xhr?
+    erb :'/sessions/_new', layout: false, locals: { errors: @errors }
+  else
+    erb :'sessions/new'
+  end
 end
 
 post '/sessions' do

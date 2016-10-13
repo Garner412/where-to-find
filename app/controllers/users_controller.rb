@@ -1,5 +1,9 @@
 get '/users/new' do
-  erb :'users/new'
+  if request.xhr?
+    erb :'users/_new', layout: false, locals: { errors: @errors }
+  else
+    erb :'users/new'
+  end
 end
 
 post '/users' do
@@ -9,7 +13,7 @@ post '/users' do
     session[:user_id] = new_user.id
     redirect "/users/#{new_user.id}"
   else
-    @messages = new_user.errors.full_messages
+    @errors = new_user.errors.full_messages
     erb :'users/new'
   end
 end
