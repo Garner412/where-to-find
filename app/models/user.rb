@@ -14,19 +14,25 @@ class User < ActiveRecord::Base
   has_many :voted_comments, through: :comments, source: :votes
 
   validates :username, :email, {presence: true, uniqueness: true}
+  validate :validate_password
 
   def password
     @password ||= Password.new(password_hash)
   end
 
   def password=(new_password)
+    @raw_password = new_password
     @password = Password.create(new_password)
     self.password_hash = @password
   end
 
   def authenticate(password)
-    self.password == password
+      self.password == password
   end
 
-
+  def validate_password
+    if @raw_password != nil? && @raw_password.length < 6
+      self.errors.add(:password, "must be greater than 6 characters")
+    end
+  end
 end
