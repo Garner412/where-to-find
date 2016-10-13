@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('.register').on('click', function(event) {
+  $('.register-login').on('click', function(event) {
     event.preventDefault();
     var $link = $(this)
     $.ajax({

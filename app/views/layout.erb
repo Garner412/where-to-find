@@ -40,13 +40,13 @@
           </form>
         </li>
         <% else %>
-        <li><a class="register" href="/users/new">register</a></li>
-        <li><a class="register" href="/sessions/new">login</a></li>
+        <li><a class="register-login" href="/users/new">register</a></li>
+        <li><a class="register-login" href="/sessions/new">login</a></li>
         <% end %>
       </ul>
     </div>
   </nav>
-  <div style="display: none;" class="z-depth-5 " id="login-register">
+  <div style="display: none;" class="z-depth-5" id="login-register">
   </div>
   <div class=" container">
   <%= yield %>
