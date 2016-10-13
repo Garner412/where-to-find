@@ -32,6 +32,9 @@
         <% end %>
       </ul>
     <% end %>
+    <form action="/questions/<%= @question.id %>/answers/new">
+      <input class="button" type="submit" value="Answer Question">
+    </form>
   <% end %>
 </ul>
 <% else %>
