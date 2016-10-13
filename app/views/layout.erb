@@ -34,8 +34,8 @@
         <% if logged_in? %>
         <li><a href="/users/<%= current_user.id %>"><%= current_user.username.capitalize %></a></li>
         <li>
-          <form method="post" action="/sessions/delete">
-            <input type="hidden" name="_method" value="delete"/>
+          <form method="post" action="/sessions">
+            <input type="hidden" name="_method" value="delete">
             <input type="submit" value="logout"/>
           </form>
         </li>
