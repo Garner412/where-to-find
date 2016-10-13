@@ -5,13 +5,17 @@
   <span>Question Votes: <%= @question.votes.count %>
 <% end %>
 <h3> <%= @question.content %> </h3></span>
-
+<% action = "/questions/#{@question.id}/votes" %>
+<%= erb :'questions/_vote_form', layout: false, locals: { action: action } %>
 <h4> Comments </h4>
 <% if @question.comments %>
   <p>Total Question Comments: <%= @question.comments.count %> </p>
   <ul>
     <% @question.comments.each do |comment| %>
-      <li><%= comment.content %><br> Votes: <%= comment.votes.count %></li><br>
+      <li><%= comment.content %><br> Votes: <%= comment.votes.count %>
+        <% action = "/comments/#{comment.id}/votes" %>
+        <%= erb :'questions/_vote_form', layout: false, locals: { action: action } %>
+      </li><br>
     <% end %>
   </ul>
 <% end %>
@@ -26,11 +30,17 @@
 <p> Total Answers: <%= @question.answers.count %></p>
 <ul>
   <% @question.answers.each do |answer| %>
-  <li><%= answer.content %><br> Votes: <%= answer.votes.count %></li><br>
+  <li><%= answer.content %><br> Votes: <%= answer.votes.count %>
+    <% action = "/answers/#{answer.id}/votes" %>
+    <%= erb :'questions/_vote_form', layout: false, locals: { action: action } %>
+  </li><br>
     <% if answer.comments %>
       <ul>
         <% answer.comments.each do |comment| %>
-          <li> <%= comment.content %><br> Votes: <%= comment.votes.count %></li><br>
+          <li> <%= comment.content %><br> Votes: <%= comment.votes.count %>
+            <% action = "/comments/#{comment.id}/votes" %>
+            <%= erb :'questions/_vote_form', layout: false, locals: { action: action } %>
+          </li><br>
         <% end %>
       </ul>
     <% end %>
