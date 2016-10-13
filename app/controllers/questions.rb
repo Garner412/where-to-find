@@ -12,16 +12,16 @@ post '/questions' do
   # end
 end
 
-get 'questions/:id' do
+get '/questions/:id' do
   @question = Question.find_by(id: params[:id])
   erb :'questions/show'
 end
 
-put 'questions/:id' do
-  @question = Question.find_by(id: params[:id])
+put '/questions/:id' do
+  # @question = Question.find_by(id: params[:id])
 end
 
-delete 'questions/:id' do
+delete '/questions/:id' do
   # @question = Question.find_by(id: params[:id])
 
 end
