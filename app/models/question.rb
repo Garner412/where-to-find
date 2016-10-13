@@ -1,6 +1,7 @@
 class Question < ActiveRecord::Base
-  # Remember to create a migration!
-  has_many: :answers
-  has_many: :comments
-  has_many: :votes
+  belongs_to :user
+  has_many :answers
+  has_many :comments, as: :commentable
+  has_many :votes, as: :voteable
+  has_one :correct_answer
 end
