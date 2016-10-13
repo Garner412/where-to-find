@@ -3,6 +3,7 @@
 
 <h3> <%= @question.content %> </h3>
 
+<%= erb :'_errors', layout: false, locals: { errors: @errors } %>
 
 <form action="/questions/<%= @question.id %>/answers" method="POST">
   <label for="content">Answer:</label><br>
