@@ -15,9 +15,11 @@
     <% end %>
   </ul>
 <% end %>
-<form action="/questions/<%= @question.id %>/comments">
-  <input class="button" type="submit" value="Create New Comment">
+<% if logged_in? %>
+<form action="/questions/<%= @question.id %>/comments/new">
+  <input class="button" type="submit" value="Question Comment">
 </form>
+<% end %>
 
 <h4> Answers </h4>
 <% if @question.answers %>
@@ -32,15 +34,19 @@
         <% end %>
       </ul>
     <% end %>
-    <form action="/questions/<%= @question.id %>/answers/new">
-      <input class="button" type="submit" value="Answer Question">
+    <% if logged_in? %>
+    <form action="/answers/<%= answer.id %>/comments/new">
+      <input class="button" type="submit" value="Answer Comment">
     </form>
+    <% end %>
   <% end %>
 </ul>
 <% else %>
 <p> No Answers Yet </p>
 <% end %>
 
+<% if logged_in? %>
 <form action="/questions/<%= @question.id %>/answers/new">
   <input class="button" type="submit" value="Answer Question">
 </form>
+<% end %>

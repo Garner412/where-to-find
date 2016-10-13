@@ -1,0 +1,14 @@
+
+<h1> <%= @question.title %> </h1>
+<h2> <%= @question.content %> </h2>
+<h3> <%= @answer.content %> </h3>
+<h4> Create New Comment: </h4>
+
+<%= erb :_errors, layout: false, locals: { errors: @errors } %>
+
+<form action="/answers/<%= @answer.id %>/comments" method="POST">
+  <label for="content">New Comment:</label><br>
+  <textarea name="content" rows="5" cols="50"></textarea><br>
+  <input class="button" type="submit" value="Submit Comment">
+</form>
+
