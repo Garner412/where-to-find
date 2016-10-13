@@ -1,11 +1,1 @@
-<h1>Login</h1>
-
-<% if @error %>
-  <p><%= @error %></p>
-<% end %>
-
-<form method="post" action="/sessions">
-  <input type="text" name="username" placeholder="Username"/><br>
-  <input type="password" name="password" placeholder="Password"/><br>
-  <input type="submit" value="Login"/>
-</form>
+<%= erb :'sessions/_new', layout: false, locals: { errors: @errors } %>

@@ -7,3 +7,25 @@
   padding: 8px;
   text-transform: uppercase;
 }
+
+#login-register {
+  position: absolute;
+  width: 40%;
+  height: 40%;
+  border: solid black 1px;
+  left: 30%;
+  top: 25%;
+  z-index: 1;
+  background-color: white;
+  border-radius: 10px;
+
+}
+
+#login-register h1 {
+  text-align: center;
+}
+#login-register form {
+  text-align: center;
+  padding-left: 30px;
+  padding-right: 30px;
+}
