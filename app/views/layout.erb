@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- 
+  <!--
     normalize.css removes cross-browser differences in defaults, e.g.,
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
@@ -18,6 +18,23 @@
   <title></title>
 </head>
 <body>
+  <nav>
+    <ul>
+      <li><a href="/">home</a></li>
+      <% if logged_in? %>
+      <li><a href="/users/<%= current_user.id %>"><%= current_user.username %></a></li>
+      <li>
+        <form method="post" action="/sessions/delete">
+          <input type="hidden" name="_method" value="delete"/>
+          <input type="submit" value="logout"/>
+        </form>
+      </li>
+      <% else %>
+      <li><a href="/users/new">register</a></li>
+      <li><a href="/sessions/new">login</a></li>
+      <% end %>
+    </ul>
+  </nav>
   <%= yield %>
 </body>
 </html>

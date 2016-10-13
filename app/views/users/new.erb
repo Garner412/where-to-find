@@ -1,0 +1,13 @@
+<h1>Create An Account</h1>
+
+<% if @messages %>
+  <% @messages.each do |message| %>
+    <p><%= message %></p>
+  <% end %>
+<% end %>
+<form method="post" action="/users">
+  <input name="user[username]" type="text" placeholder="Pick A Username"><br>
+  <input name="user[email]" type="email" placeholder="Your Email"><br>
+  <input name="password" type="Password" placeholder="Pick a Password"><br>
+  <input type="submit" value="Register!"><br>
+</form>
