@@ -53,3 +53,10 @@ put '/questions/:question_id/answers/:answer_id' do
     erb :'answers/edit'
   end
 end
+
+delete '/answers/:id' do
+  @answer = Answer.find_by(id: params[:id])
+  @question = @answer.question
+  @answer.destroy
+  redirect "/questions/#{@question.id}"
+end

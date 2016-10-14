@@ -54,6 +54,8 @@ put '/questions/:id' do
 end
 
 delete '/questions/:id' do
-  # @question = Question.find_by(id: params[:id])
+  @question = Question.find_by(id: params[:id])
+  @question.destroy
+  redirect '/questions'
 end
 

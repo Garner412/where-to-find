@@ -3,6 +3,10 @@
 <% if owner?(@question.user) %>
   <span><a href="/questions/<%= @question.id %>/edit">Edit</a>
     |
+    <form method="post" action="/questions/<%= @question.id %>">
+      <input type="hidden" name="_method" value="delete"/>
+      <input type="submit" value="delete"/>
+    </form>
 <% end %>
 
 <% if @question.votes %>
@@ -21,6 +25,10 @@
       <li><%= comment.content %><br> Votes: <%= comment.votes.count %>
         <% if owner?(comment.user) %>
           <a href="/questions/<%= @question.id %>/comments/<%= comment.id %>/edit">| edit</a>
+          <form method="post" action="/questions/<%= @question.id %>/comments/<%= comment.id %>">
+            <input type="hidden" name="_method" value="delete"/>
+            <input type="submit" value="delete"/>
+          </form>
         <% end %>
         <% if logged_in? %>
           <% action = "/comments/#{comment.id}/votes" %>
@@ -44,6 +52,10 @@
   <li><%= answer.content %><br> Votes: <%= answer.votes.count %>
     <% if owner?(answer.user) %>
       <a href="/questions/<%= @question.id %>/answers/<%= answer.id %>/edit">| edit</a>
+      <form method="post" action="/answers/<%= answer.id %>">
+        <input type="hidden" name="_method" value="delete"/>
+        <input type="submit" value="delete"/>
+      </form>
     <% end %>
     <% if logged_in? %>
       <% action = "/answers/#{answer.id}/votes" %>
@@ -56,6 +68,10 @@
           <li> <%= comment.content %><br> Votes: <%= comment.votes.count %>
             <% if owner?(comment.user) %>
               <a href="/answers/<%= answer.id %>/comments/<%= comment.id %>/edit">| edit</a>
+              <form method="post" action="/answers/<%= answer.id %>/comments/<%= comment.id %>">
+                <input type="hidden" name="_method" value="delete"/>
+                <input type="submit" value="delete"/>
+              </form>
             <% end %>
             <% if logged_in? %>
               <% action = "/comments/#{comment.id}/votes" %>

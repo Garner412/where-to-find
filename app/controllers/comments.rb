@@ -114,3 +114,18 @@ put '/answers/:answer_id/comments/:comment_id' do
   end
 end
 
+delete '/questions/:question_id/comments/:comment_id' do
+  @question = Question.find_by(id: params[:question_id])
+  @comment = Comment.find_by(id: params[:comment_id])
+  @comment.destroy
+  redirect "/questions/#{@question.id}"
+end
+
+delete '/answers/:answer_id/comments/:comment_id' do
+  @answer = Answer.find_by(id: params[:answer_id])
+  @question = @answer.question
+  @comment = Comment.find_by(id: params[:comment_id])
+  @comment.destroy
+  redirect "/questions/#{@question.id}"
+end
+
