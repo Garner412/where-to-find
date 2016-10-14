@@ -5,9 +5,5 @@
 
 <%= erb :'_errors', layout: false, locals: { errors: @errors } %>
 
-<form action="/questions/<%= @question.id %>/answers" method="POST">
-  <label for="content">Answer:</label><br>
-  <textarea name="content" rows="5" cols="50"></textarea><br>
-  <input class="button" type="submit" value="Submit Answer">
-</form>
+<%= erb :'answers/_form', layout: false, locals: { action: @action, method: @method,  answer: @answer, event: @event } %>
 

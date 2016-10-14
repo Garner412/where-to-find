@@ -5,6 +5,7 @@ end
 
 post '/questions' do
   @question = Question.new(params[:question])
+  @question.user = current_user
   if @question.save
     redirect "/questions/#{@question.id}"
   else
@@ -13,9 +14,9 @@ post '/questions' do
 end
 
 get '/questions/new' do
-  @question = Question.new
+  @question = Question.new(user: current_user)
   @method = "Post"
-  @action = "/questions/"
+  @action = "/questions"
   if logged_in?
     erb :'/questions/new'
   else
@@ -42,7 +43,7 @@ end
 put '/questions/:id' do
   @question = Question.find_by(id: params[:id])
   @question.update_attributes(params[:question])
-  if @question.persisted?
+  if @question.valid?
     redirect "/questions/#{params[:id]}"
   else
     @errors = @question.errors.full_messages
