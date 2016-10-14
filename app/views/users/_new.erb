@@ -3,7 +3,7 @@
 
   <%= erb :_errors, layout: false, locals: { errors: @errors } %>
 
-  <form method="post" action="/users">
+  <form id="login-form" method="post" action="/users">
     <input name="user[username]" type="text" placeholder="Pick A Username"><br>
     <input name="user[email]" type="email" placeholder="Your Email"><br>
     <input name="password" type="Password" placeholder="Pick a Password"><br>

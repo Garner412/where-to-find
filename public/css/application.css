@@ -29,3 +29,7 @@
   padding-left: 30px;
   padding-right: 30px;
 }
+
+#login-errors {
+  text-align: center;
+}
