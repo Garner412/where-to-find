@@ -1,109 +1,113 @@
 
 <h1> <%= @question.title %> </h1>
 <% if owner?(@question.user) %>
-  <span><a href="/questions/<%= @question.id %>/edit">Edit</a>
-    |
-    <form method="post" action="/questions/<%= @question.id %>">
-      <input type="hidden" name="_method" value="delete"/>
-      <input type="submit" value="delete"/>
-    </form>
-<% end %>
-
-<% if @question.votes %>
+<span><a href="/questions/<%= @question.id %>/edit">Edit</a>
+  |
+  <form method="post" action="/questions/<%= @question.id %>">
+    <input type="hidden" name="_method" value="delete"/>
+    <input type="submit" value="delete"/>
+  </form>
+  <% end %>
   <div class="vote-container">
-  <span>Votes: <%= @question.votes.count %></span>
-<% end %>
-<% if logged_in? %>
-  <% action = "/questions/#{@question.id}/votes" %>
-  <%= erb :'questions/_vote_form', layout: false, locals: { action: action } %>
-<% end %>
-</div>
-<h3> <%= @question.content %> </h3>
-<h4> Comments </h4>
-<% if @question.comments %>
+  <% if @question.votes %>
+
+    <span>Votes: <%= @question.votes.count %></span>
+    <% end %>
+
+    <% if logged_in? %>
+    <% action = "/questions/#{@question.id}/votes" %>
+    <%= erb :'questions/_vote_form', layout: false, locals: { action: action } %>
+    <% end %>
+
+  </div>
+  <h3> <%= @question.content %> </h3>
+  <h4> Comments </h4>
+  <% if @question.comments %>
   <p>Total Question Comments: <%= @question.comments.count %> </p>
   <ul>
     <% @question.comments.each do |comment| %>
-      <li><%= comment.content %><br>
-        <div class="vote-container">
+    <li><%= comment.content %><br>
+      <div class="vote-container">
         <span>Votes: <%= comment.votes.count %></span>
         <% if logged_in? %>
-          <% action = "/comments/#{comment.id}/votes" %>
-          <%= erb :'questions/_vote_form', layout: false, locals: { action: action } %>
+        <% action = "/comments/#{comment.id}/votes" %>
+        <%= erb :'questions/_vote_form', layout: false, locals: { action: action } %>
         <% end %>
       </div>
-        <% if owner?(comment.user) %>
-          <a href="/questions/<%= @question.id %>/comments/<%= comment.id %>/edit">| edit</a>
-          <form method="post" action="/questions/<%= @question.id %>/comments/<%= comment.id %>">
-            <input type="hidden" name="_method" value="delete"/>
-            <input type="submit" value="delete"/>
-          </form>
-        <% end %>
-      </li><br>
+      <% if owner?(comment.user) %>
+      <a href="/questions/<%= @question.id %>/comments/<%= comment.id %>/edit">| edit</a>
+      <form method="post" action="/questions/<%= @question.id %>/comments/<%= comment.id %>">
+        <input type="hidden" name="_method" value="delete"/>
+        <input type="submit" value="delete"/>
+      </form>
+      <% end %>
+    </li><br>
     <% end %>
   </ul>
-<% end %>
-<% if logged_in? %>
-<form action="/questions/<%= @question.id %>/comments/new">
-  <input class="button" type="submit" value="Question Comment">
-</form>
-<% end %>
+  <% end %>
+  <% if logged_in? %>
+  <form action="/questions/<%= @question.id %>/comments/new">
+    <input class="button" type="submit" value="Question Comment">
+  </form>
+  <% end %>
 
-<h4> Answers </h4>
-<% if @question.answers %>
-<p> Total Answers: <%= @question.answers.count %></p>
-<ul>
-  <% @question.answers.each do |answer| %>
-  <li><%= answer.content %><br>
-    <div class="vote-container">
-      <span>Votes: <%= answer.votes.count %></span>
-      <% if logged_in? %>
+  <h4> Answers </h4>
+  <% if @question.answers %>
+  <p> Total Answers: <%= @question.answers.count %></p>
+  <ul>
+    <% @question.answers.each do |answer| %>
+    <li><%= answer.content %><br>
+      <div class="vote-container">
+        <span>Votes: <%= answer.votes.count %></span>
+        <% if logged_in? %>
         <% action = "/answers/#{answer.id}/votes" %>
         <%= erb :'questions/_vote_form', layout: false, locals: { action: action } %>
-      <% end %>
-    </div>
-    <% if owner?(answer.user) %>
+        <% end %>
+      </div>
+      <% if owner?(answer.user) %>
       <a href="/questions/<%= @question.id %>/answers/<%= answer.id %>/edit">| edit</a>
       <form method="post" action="/answers/<%= answer.id %>">
         <input type="hidden" name="_method" value="delete"/>
         <input type="submit" value="delete"/>
       </form>
-    <% end %>
+      <% end %>
 
-  </li><br>
+    </li><br>
     <% if answer.comments %>
-      <ul>
-        <% answer.comments.each do |comment| %>
-          <li> <%= comment.content %><br>
-            <span>Votes: <%= comment.votes.count %></span>
-            <% if logged_in? %>
-              <% action = "/comments/#{comment.id}/votes" %>
-              <%= erb :'questions/_vote_form', layout: false, locals: { action: action } %>
-            <% end %>
-            <% if owner?(comment.user) %>
-              <a href="/answers/<%= answer.id %>/comments/<%= comment.id %>/edit">| edit</a>
-              <form method="post" action="/answers/<%= answer.id %>/comments/<%= comment.id %>">
-                <input type="hidden" name="_method" value="delete"/>
-                <input type="submit" value="delete"/>
-              </form>
-            <% end %>
-          </li><br>
+    <ul>
+      <% answer.comments.each do |comment| %>
+      <li> <%= comment.content %><br>
+        <div class="vote-container">
+        <span>Votes: <%= comment.votes.count %></span>
+        <% if logged_in? %>
+        <% action = "/comments/#{comment.id}/votes" %>
+        <%= erb :'questions/_vote_form', layout: false, locals: { action: action } %>
         <% end %>
-      </ul>
+      </div>
+        <% if owner?(comment.user) %>
+        <a href="/answers/<%= answer.id %>/comments/<%= comment.id %>/edit">| edit</a>
+        <form method="post" action="/answers/<%= answer.id %>/comments/<%= comment.id %>">
+          <input type="hidden" name="_method" value="delete"/>
+          <input type="submit" value="delete"/>
+        </form>
+        <% end %>
+      </li><br>
+      <% end %>
+    </ul>
     <% end %>
     <% if logged_in? %>
     <form action="/answers/<%= answer.id %>/comments/new">
       <input class="button" type="submit" value="Answer Comment">
     </form>
     <% end %>
+    <% end %>
+  </ul>
+  <% else %>
+  <p> No Answers Yet </p>
   <% end %>
-</ul>
-<% else %>
-<p> No Answers Yet </p>
-<% end %>
 
-<% if logged_in? %>
-<form action="/questions/<%= @question.id %>/answers/new">
-  <input class="button" type="submit" value="Answer Question">
-</form>
-<% end %>
+  <% if logged_in? %>
+  <form action="/questions/<%= @question.id %>/answers/new">
+    <input class="button" type="submit" value="Answer Question">
+  </form>
+  <% end %>

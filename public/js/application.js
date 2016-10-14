@@ -36,7 +36,7 @@ $(document).ready(function() {
     })
   })
 
-  $("body").on("click",".vote",function() {
+  $(".vote-container").on("click",".vote",function() {
     event.preventDefault();
     var $form = $(this);
     var url = $form.attr('action');
