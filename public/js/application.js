@@ -47,7 +47,7 @@ $(document).ready(function() {
       type: type,
     })
     .done(function(response){
-      $form.prev().text("Votes: " + response)
+      $form.parent().find("span").text("Votes: " + response)
     })
 
   });
