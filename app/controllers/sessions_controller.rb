@@ -13,10 +13,19 @@ post '/sessions' do
   @user = User.find_by(username: params[:username])
   if @user && @user.authenticate(params[:password])
     session[:user_id] = @user.id
-    redirect "/users/#{@user.id}"
+    if request.xhr?
+      "http://localhost:9393/users/#{@user.id}"
+    else
+      redirect "/users/#{@user.id}"
+    end
   else
-    @error = "Error: Incorrect username or password"
-    erb :'sessions/new'
+    @errors = ["Incorrect Username and Password combination."]
+    if request.xhr?
+      status 422
+      @errors
+    else
+      erb :'sessions/new'
+    end
   end
 end
 

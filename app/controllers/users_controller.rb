@@ -11,10 +11,19 @@ post '/users' do
   new_user.password = params[:password]
   if new_user.save
     session[:user_id] = new_user.id
-    redirect "/users/#{new_user.id}"
+    if request.xhr?
+      "http://localhost:9393/users/#{new_user.id}"
+    else
+      redirect "/users/#{new_user.id}"
+    end
   else
     @errors = new_user.errors.full_messages
-    erb :'users/new'
+    if request.xhr?
+      status 422
+      erb :_errors, layout: false, locals: {errors: @errors}
+    else
+      erb :'users/new'
+    end
   end
 end
 
