@@ -42,10 +42,14 @@ end
 put '/questions/:question_id/answers/:answer_id' do
   @answer = Answer.find(params[:answer_id])
   @answer.update_attributes(content: params[:content])
+  @question = @answer.question
   if @answer.valid?
     redirect "/questions/#{@answer.question.id}"
   else
-    @errors = @answers.errors.full_messages
+    @errors = @answer.errors.full_messages
+    @action = "/questions/#{@question.id}/answers/#{@answer.id}"
+    @method = "Put"
+    @event = "Edit Answer"
     erb :'answers/edit'
   end
 end

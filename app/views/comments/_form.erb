@@ -1,0 +1,6 @@
+<form action="<%= action %>" method="POST">
+  <label for="content">Your Comment:</label><br>
+  <input type="hidden" name="_method" value="<%= method %>">
+  <textarea name="content" rows="5" cols="50" placeholder="Comment"><%= comment.content %></textarea><br>
+  <input class="button" type="submit" value="<%= event %>" >
+</form>

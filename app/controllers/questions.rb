@@ -47,6 +47,8 @@ put '/questions/:id' do
     redirect "/questions/#{params[:id]}"
   else
     @errors = @question.errors.full_messages
+    @method = "Put"
+    @action = "/questions/#{@question.id}"
     erb :'questions/edit'
   end
 end
