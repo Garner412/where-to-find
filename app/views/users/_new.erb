@@ -1,9 +1,11 @@
 <div class="login-form">
   <h1>Create An Account</h1>
 
+<div class="error-bucket">
   <%= erb :_errors, layout: false, locals: { errors: @errors } %>
+</div>
 
-  <form id="login-form" method="post" action="/users">
+  <form class="login-register-form" method="post" action="/users">
     <input name="user[username]" type="text" placeholder="Pick A Username"><br>
     <input name="user[email]" type="email" placeholder="Your Email"><br>
     <input name="password" type="Password" placeholder="Pick a Password"><br>

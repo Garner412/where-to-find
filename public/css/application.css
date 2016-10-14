@@ -10,8 +10,8 @@
 
 #login-register {
   position: absolute;
-  width: 40%;
-  height: 40%;
+  width: 400px;
+  height: 500px;
   border: solid black 1px;
   left: 30%;
   top: 25%;
@@ -30,6 +30,6 @@
   padding-right: 30px;
 }
 
-#login-errors {
+.error-bucket  {
   text-align: center;
 }

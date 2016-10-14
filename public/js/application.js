@@ -13,7 +13,7 @@ $(document).ready(function() {
       console.log(resposne)
     })
   })
-  $("#login-register").on("submit", "#login-form", function(event){
+  $("#login-register").on("submit", ".login-register-form", function(event){
     event.preventDefault();
 
     var $form = $(this);
@@ -28,12 +28,11 @@ $(document).ready(function() {
     })
     .done(function(response){
       window.location.replace(response)
-
     })
     .fail(function(response){
-      console.log(response)
-      $("#login-errors").text("")
-      $("#login-errors").append(response.responseText)
+      console.log(response.responseText)
+      $(".error-bucket").text("")
+      $(".error-bucket").append(response.responseText)
     })
   })
 });

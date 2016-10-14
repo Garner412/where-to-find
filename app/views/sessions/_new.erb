@@ -1,9 +1,10 @@
 <h1>Login</h1>
-<div id="login-errors" >
+
+<div class="error-bucket" >
   <%= erb :_errors, layout: false, locals: { errors: @errors } %>
 </div>
 
-<form id="login-form" method="post" action="/sessions">
+<form class="login-register-form" method="post" action="/sessions">
   <input type="text" name="username" placeholder="Username"/><br>
   <input type="password" name="password" placeholder="Password"/><br>
   <input type="submit" value="Login"/>
