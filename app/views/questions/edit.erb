@@ -1,0 +1,10 @@
+<br><br><br>
+<div class="container">
+  <br><br>
+
+  <%= erb :'questions/_errors', layout: false, locals: {errors: @errors} %>
+
+  <h2 id="Header"> Edit Question </h2>
+
+  <%= erb :'questions/_form', layout: false, locals: {question: @question, method: @method, action: @action, event: "Update Question"} %>
+</div>

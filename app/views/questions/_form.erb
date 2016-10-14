@@ -1,0 +1,10 @@
+<form action="<%= action %>" method="post"><br><br>
+    <div class="form-group">
+      <input type="hidden" class="form-control" name="_method" value="<%= method %>">
+      <label for="title">Title</label><br>
+      <input type="text" class="form-control" name="question[title]" placeholder="Title" value="<%= question.title%>"><br><br>
+      <label for="content">Question</label><br>
+      <textarea name="question[content]" class="form-control" placeholder="Question" ><%= question.content %></textarea><br><br>
+      <input type="submit" value="<%= event %>"class="btn btn-default">
+    </div>
+  </form>

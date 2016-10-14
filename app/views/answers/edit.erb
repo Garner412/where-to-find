@@ -1,0 +1,8 @@
+
+<h1> <%= @question.title %> </h1>
+
+<h3> <%= @question.content %> </h3>
+
+<%= erb :'_errors', layout: false, locals: { errors: @errors } %>
+
+<%= erb :'answers/_form', layout: false, locals: { action: @action, method: @method,  answer: @answer, event: @event } %>
