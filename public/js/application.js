@@ -35,6 +35,24 @@ $(document).ready(function() {
       $(".error-bucket").append(response.responseText)
     })
   })
+
+  $(".vote-container").on("click",".vote",function() {
+    event.preventDefault();
+    var $form = $(this);
+    var url = $form.attr('action');
+    var type = $form.attr('method');
+
+    $.ajax({
+      url: url,
+      type: type,
+    })
+    .done(function(response){
+      $form.parent().find("span").text("Votes: " + response)
+    })
+
+  });
+
+
 });
 
 
