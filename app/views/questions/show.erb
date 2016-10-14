@@ -1,5 +1,9 @@
 
 <h1> <%= @question.title %> </h1>
+<% if owner?(@question.user) %>
+  <span><a href="/questions/<%= @question.id %>/edit">Edit</a>
+    |
+<% end %>
 
 <% if @question.votes %>
   <span>Question Votes: <%= @question.votes.count %>
