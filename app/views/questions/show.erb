@@ -5,7 +5,7 @@
   |
   <form method="post" action="/questions/<%= @question.id %>">
     <input type="hidden" name="_method" value="delete"/>
-    <input type="submit" value="delete"/>
+    <input type="submit" class="button waves-effect grey darken-2" value="delete"/>
   </form>
   <% end %>
   <div class="vote-container">
@@ -38,7 +38,7 @@
       <a href="/questions/<%= @question.id %>/comments/<%= comment.id %>/edit">| edit</a>
       <form method="post" action="/questions/<%= @question.id %>/comments/<%= comment.id %>">
         <input type="hidden" name="_method" value="delete"/>
-        <input type="submit" value="delete"/>
+        <input class="button waves-effect grey darken-2" type="submit" value="delete"/>
       </form>
       <% end %>
     </li><br>
@@ -47,7 +47,7 @@
   <% end %>
   <% if logged_in? %>
   <form action="/questions/<%= @question.id %>/comments/new">
-    <input class="button" type="submit" value="Question Comment">
+    <input class="button  waves-effect grey darken-2" type="submit" value="Question Comment">
   </form>
   <% end %>
 
@@ -68,7 +68,7 @@
       <a href="/questions/<%= @question.id %>/answers/<%= answer.id %>/edit">| edit</a>
       <form method="post" action="/answers/<%= answer.id %>">
         <input type="hidden" name="_method" value="delete"/>
-        <input type="submit" value="delete"/>
+        <input class="button waves-effect grey darken-2" type="submit" value="delete"/>
       </form>
       <% end %>
 
@@ -88,7 +88,7 @@
         <a href="/answers/<%= answer.id %>/comments/<%= comment.id %>/edit">| edit</a>
         <form method="post" action="/answers/<%= answer.id %>/comments/<%= comment.id %>">
           <input type="hidden" name="_method" value="delete"/>
-          <input type="submit" value="delete"/>
+          <input class="button waves-effect grey darken-2" type="submit" value="delete"/>
         </form>
         <% end %>
       </li><br>
@@ -97,7 +97,7 @@
     <% end %>
     <% if logged_in? %>
     <form action="/answers/<%= answer.id %>/comments/new">
-      <input class="button" type="submit" value="Answer Comment">
+      <input class="button  waves-effect grey darken-2" type="submit" value="Answer Comment">
     </form>
     <% end %>
     <% end %>
@@ -108,6 +108,6 @@
 
   <% if logged_in? %>
   <form action="/questions/<%= @question.id %>/answers/new">
-    <input class="button" type="submit" value="Answer Question">
+    <input class="button waves-effect grey darken-2" type="submit" value="Answer Question">
   </form>
   <% end %>
